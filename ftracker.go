@@ -108,7 +108,7 @@ const (
 // height float64 — рост пользователя.
 func WalkingSpentCalories(action int, duration, weight, height float64) float64 {
 	// ваш код здесь
-	if duration == 0 {
+	if duration == 0 || height == 0 {
 		return 0
 	}
 	speedInMSec := meanSpeed(action, duration)
@@ -147,7 +147,7 @@ func swimmingMeanSpeed(lengthPool, countPool int, duration float64) float64 {
 // weight float64 — вес пользователя.
 func SwimmingSpentCalories(lengthPool, countPool int, duration, weight float64) float64 {
 	// ваш код здесь
-	SwSpeedInKmH := swimmingMeanSpeed(lengthPool, countPool, duration)
-	SwSpentCalories := (SwSpeedInKmH + swimmingCaloriesMeanSpeedShift) * float64(swimmingCaloriesWeightMultiplier) * weight * duration
-	return SwSpentCalories
+	swSpeedInKmH := swimmingMeanSpeed(lengthPool, countPool, duration)
+	swSpentCalories := (swSpeedInKmH + swimmingCaloriesMeanSpeedShift) * float64(swimmingCaloriesWeightMultiplier) * weight * duration
+	return swSpentCalories
 }
